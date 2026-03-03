@@ -5,7 +5,7 @@ import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
 from .graph import create_orchestrator_graph
 
-app = FastAPI(title="EcoStream Orchestrator Service", version="1.0.0")
+app = FastAPI(title="NeuroPress Orchestrator Service", version="1.0.0")
 
 # Enable CORS
 app.add_middleware(

@@ -53,7 +53,7 @@ export default function Sidebar() {
                 {expanded && (
                     <div>
                         <div style={{ fontSize: '14px', fontWeight: 900, letterSpacing: '-0.5px', background: 'linear-gradient(135deg, #fff 30%, #00f2fe)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                            PrintSense AI
+                            NeuroPress
                         </div>
                         <div style={{ fontSize: '9px', color: '#2d3748', fontWeight: 600, letterSpacing: '2px', textTransform: 'uppercase', marginTop: '2px' }}>
                             Enterprise Platform
