@@ -2,9 +2,19 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import List
 import uvicorn
+from fastapi.middleware.cors import CORSMiddleware
 from .model import PriceForecaster
 
 app = FastAPI(title="EcoStream Price Forecasting Service", version="1.0.0")
+
+# Enable CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 forecaster = PriceForecaster()
 
 class PredictionRequest(BaseModel):

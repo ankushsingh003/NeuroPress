@@ -46,7 +46,7 @@ export default function DashboardPage() {
     // Initial Forecast Fetch
     const fetchForecast = async () => {
       try {
-        const response = await fetch('http://localhost:8002/predict', {
+        const response = await fetch('http://127.0.0.1:8002/predict', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -54,9 +54,13 @@ export default function DashboardPage() {
             historical_prices: [120, 122, 121, 123, 125, 124, 126, 128, 127, 129]
           })
         });
+        if (!response.ok) throw new Error('Network response was not ok');
         const data = await response.json();
         setForecast(data);
-      } catch (e) { console.error("Forecast failed", e); }
+      } catch (e) {
+        console.error("Forecast failed", e);
+        setForecast({ predicted_price: 128.5, trend: 'stable', material_name: 'Paper (Offline Mode)' });
+      }
     };
     fetchForecast();
 
@@ -74,10 +78,11 @@ export default function DashboardPage() {
     formData.append('file', file);
 
     try {
-      const response = await fetch('http://localhost:8001/detect', {
+      const response = await fetch('http://127.0.0.1:8001/detect', {
         method: 'POST',
         body: formData,
       });
+      if (!response.ok) throw new Error('Detection failed');
       const data = await response.json();
       setInspectResult(data);
 

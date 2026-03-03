@@ -2,9 +2,19 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import List
 import uvicorn
+from fastapi.middleware.cors import CORSMiddleware
 from .graph import create_orchestrator_graph
 
 app = FastAPI(title="EcoStream Orchestrator Service", version="1.0.0")
+
+# Enable CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 graph = create_orchestrator_graph()
 
 class OrchestrationRequest(BaseModel):
