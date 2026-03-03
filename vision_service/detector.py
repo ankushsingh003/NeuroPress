@@ -12,7 +12,7 @@ class DefectDetector:
         """
         if model_path is None:
             # Default to the best model from the training run
-            model_path = r'd:\PTRN\training_runs\margin_guard_vqi_v1\weights\best.pt'
+            model_path = r'd:\PTRN\training_runs\margin_guard_vqi_v13\weights\best.pt'
         
         if os.path.exists(model_path):
             self.model = YOLO(model_path)
@@ -48,12 +48,18 @@ class DefectDetector:
                     defects.append({
                         "label": label,
                         "confidence": round(conf, 3),
+                        "box": [
+                            float(b[0] / width), 
+                            float(b[1] / height), 
+                            float(b[2] / width), 
+                            float(b[3] / height)
+                        ],
                         "bbox": [int(b[0]), int(b[1]), int(b[2]), int(b[3])],
                         "status": "CRITICAL" if conf > 0.8 else "WARNING"
                     })
         else:
             # Fallback Mock logic for demo
-            if np.random.random() > 0.7:
+            if np.random.random() > 0.2: # Increased frequency for demo
                 num_defects = np.random.randint(1, 4)
                 for _ in range(num_defects):
                     label = np.random.choice(self.classes)
@@ -65,13 +71,32 @@ class DefectDetector:
                     defects.append({
                         "label": label,
                         "confidence": round(conf, 3),
+                        "box": [
+                            float(x1 / width), 
+                            float(y1 / height), 
+                            float(x2 / width), 
+                            float(y2 / height)
+                        ],
                         "bbox": [x1, y1, x2, y2],
                         "status": "CRITICAL" if conf > 0.9 else "WARNING"
                     })
 
         latency = (time.time() - start_time) * 1000
+        
+        # Calculate Quality Score
+        # Start at 100, deduct based on defect count and severity
+        base_score = 100
+        for d in defects:
+            deduction = 20 if d["status"] == "CRITICAL" else 10
+            base_score -= deduction
+        
+        quality_score = max(0, min(100, base_score))
+        
         return {
             "defects": defects,
+            "total_defects": len(defects),
+            "quality_score": quality_score,
+            "status": "PASS" if quality_score > 85 else "FAIL" if quality_score < 60 else "WARNING",
             "latency_ms": round(latency, 2),
             "timestamp": time.time(),
             "metadata": {

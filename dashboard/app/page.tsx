@@ -154,18 +154,20 @@ export default function DashboardPage() {
               <div className="preview-container">
                 <img src={previewUrl} alt="Inspection" className="inspect-preview" />
                 {inspectResult?.defects?.map((defect: any, idx: number) => (
-                  <div
-                    key={idx}
-                    className="detection-box"
-                    style={{
-                      top: `${defect.box[1] * 100}%`,
-                      left: `${defect.box[0] * 100}%`,
-                      width: `${(defect.box[2] - defect.box[0]) * 100}%`,
-                      height: `${(defect.box[3] - defect.box[1]) * 100}%`
-                    }}
-                  >
-                    <span className="box-label">{defect.label} [{Math.round(defect.confidence * 100)}%]</span>
-                  </div>
+                  defect.box && (
+                    <div
+                      key={idx}
+                      className="detection-box"
+                      style={{
+                        top: `${defect.box[1] * 100}%`,
+                        left: `${defect.box[0] * 100}%`,
+                        width: `${(defect.box[2] - defect.box[0]) * 100}%`,
+                        height: `${(defect.box[3] - defect.box[1]) * 100}%`
+                      }}
+                    >
+                      <span className="box-label">{defect.label} [{Math.round(defect.confidence * 100)}%]</span>
+                    </div>
+                  )
                 ))}
               </div>
             ) : (
@@ -181,20 +183,35 @@ export default function DashboardPage() {
             )}
 
             <div className="telemetry-overlay">
-              <div>LATENCY: {isUploading ? '---' : '42ms'}</div>
-              <div>RESOLUTION: {previewUrl ? 'Detecting...' : '1280x720'}</div>
-              <div>MODEL: YOLOv8_INDUSTRIAL</div>
-              {inspectResult && <div style={{ color: 'var(--primary)' }}>QUALITY_SCORE: {inspectResult.quality_score}</div>}
+              <div>LATENCY: {isUploading ? '---' : `${inspectResult?.latency_ms || 42}ms`}</div>
+              <div>RESOLUTION: {inspectResult?.metadata?.image_size ? `${inspectResult.metadata.image_size[0]}x${inspectResult.metadata.image_size[1]}` : '1280x720'}</div>
+              <div>MODEL: {inspectResult?.metadata?.model || 'YOLOv8_INDUSTRIAL'}</div>
+              {inspectResult && (
+                <div className={`quality-indicator ${inspectResult.status.toLowerCase()}`}>
+                  QUALITY: {inspectResult.quality_score}% [{inspectResult.status}]
+                </div>
+              )}
             </div>
           </div>
 
           <div className="feed-vignettes">
-            {[1, 2, 3].map(i => (
-              <div key={i} className="vignette">
-                <div className="vignette-label">FEED_{i}</div>
-                <div className="vignette-static"></div>
+            {inspectResult?.defects?.length > 0 ? (
+              <div className="defect-detail-grid">
+                {inspectResult.defects.map((d: any, i: number) => (
+                  <div key={i} className={`defect-tag ${d.status.toLowerCase()}`}>
+                    <span className="defect-type">{d.label}</span>
+                    <span className="defect-conf">{Math.round(d.confidence * 100)}% Precision</span>
+                  </div>
+                ))}
               </div>
-            ))}
+            ) : (
+              [1, 2, 3].map(i => (
+                <div key={i} className="vignette">
+                  <div className="vignette-label">FEED_{i}</div>
+                  <div className="vignette-static"></div>
+                </div>
+              ))
+            )}
           </div>
         </div>
 
@@ -572,6 +589,43 @@ export default function DashboardPage() {
           from { opacity: 0; transform: translateY(10px); }
           to { opacity: 1; transform: translateY(0); }
         }
+        .quality-indicator {
+          margin-top: 8px;
+          padding: 4px 12px;
+          border-radius: 4px;
+          font-weight: 800;
+          font-size: 11px;
+          text-transform: uppercase;
+          display: inline-block;
+        }
+        .quality-indicator.pass { background: #10b981; color: #000; box-shadow: 0 0 15px rgba(16, 185, 129, 0.4); }
+        .quality-indicator.warning { background: #f59e0b; color: #000; box-shadow: 0 0 15px rgba(245, 158, 11, 0.4); }
+        .quality-indicator.fail { background: #ef4444; color: #fff; box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); }
+
+        .defect-detail-grid {
+          display: flex;
+          gap: 12px;
+          flex-wrap: wrap;
+          width: 100%;
+        }
+
+        .defect-tag {
+          flex: 1;
+          min-width: 140px;
+          padding: 8px 16px;
+          background: rgba(255, 255, 255, 0.03);
+          border-left: 3px solid #333;
+          border-radius: 4px;
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+        }
+
+        .defect-tag.critical { border-left-color: #ef4444; background: rgba(239, 68, 68, 0.05); }
+        .defect-tag.warning { border-left-color: #f59e0b; background: rgba(245, 158, 11, 0.05); }
+
+        .defect-type { font-size: 12px; font-weight: 700; color: #fff; text-transform: uppercase; }
+        .defect-conf { font-size: 10px; color: #94a3b8; }
       `}</style>
     </div>
   );
