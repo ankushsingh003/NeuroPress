@@ -1,8 +1,8 @@
-# 🖨️ PrintSense AI — Industrial Printing Intelligence Platform
+# 🖨️ NeuroPress — Industrial Printing Intelligence Platform
 
 <div align="center">
 
-![PrintSense AI](https://img.shields.io/badge/PrintSense%20AI-v2.0-00f2fe?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTEyIDJMMyAyMmgxOEwxMiAyeiIvPjwvc3ZnPg==)
+![NeuroPress](https://img.shields.io/badge/NeuroPress-v2.0-00f2fe?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTEyIDJMMyAyMmgxOEwxMiAyeiIvPjwvc3ZnPg==)
 ![Next.js](https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js)
 ![FastAPI](https://img.shields.io/badge/FastAPI-3.0-009688?style=for-the-badge&logo=fastapi)
 ![YOLOv8](https://img.shields.io/badge/YOLOv8-Ultralytics-purple?style=for-the-badge)
@@ -12,7 +12,7 @@
 
 **An end-to-end AI-powered quality control and operational intelligence platform for the printing and packaging industry.**
 
-[🚀 Live Dashboard](https://printsense-ai-dashboard.onrender.com) · [📂 GitHub](https://github.com/ankushsingh003/Waste-Management)
+[🚀 Live Dashboard](https://neuropress-ai-dashboard.onrender.com) · [📂 GitHub](https://github.com/ankushsingh003/Waste-Management)
 
 </div>
 
@@ -40,9 +40,9 @@
 
 ## 🧠 Project Overview
 
-**PrintSense AI** is a multi-agent AI platform designed specifically for the **printing and packaging industry**. It solves three core operational challenges that printing companies face every day:
+**NeuroPress** is a multi-agent AI platform designed specifically for the **printing and packaging industry**. It solves three core operational challenges that printing companies face every day:
 
-| Problem | PrintSense AI Solution |
+| Problem | NeuroPress Solution |
 |---------|----------------------|
 | 🔴 **Manual quality inspection** — slow, inconsistent, expensive | ✅ YOLOv8 visual AI inspects every print in real-time at <50ms latency |
 | 🔴 **Reactive supply chain** — buying raw materials when prices spike | ✅ LSTM model forecasts paper/ink/material prices 5 weeks ahead |

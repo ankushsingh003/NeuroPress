@@ -163,7 +163,7 @@ export default function CommandCenter() {
       {/* ── Header ─────────────────────────────────────── */}
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '32px' }}>
         <div className="page-header" style={{ marginBottom: 0 }}>
-          <div className="breadcrumb">PrintSense AI / {facility} / Production Line A</div>
+          <div className="breadcrumb">NeuroPress / {facility} / Production Line A</div>
           <h1 style={{ fontSize: '26px', fontWeight: 900, letterSpacing: '-1px' }}>
             Command Center <span className="badge badge-teal" style={{ verticalAlign: 'middle', marginLeft: '10px', fontSize: '10px' }}>v2.0 AI-Core</span>
           </h1>

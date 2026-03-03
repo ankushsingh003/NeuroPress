@@ -38,7 +38,7 @@ export default function SettingsPage() {
         <div className="animate-fade-up">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '32px' }}>
                 <div className="page-header" style={{ marginBottom: 0 }}>
-                    <div className="breadcrumb">PrintSense AI / System Config</div>
+                    <div className="breadcrumb">NeuroPress / System Config</div>
                     <h1>System Configuration <span className="badge badge-violet" style={{ verticalAlign: 'middle', marginLeft: '10px', fontSize: '10px' }}>v2.0</span></h1>
                     <p>API endpoints, alert thresholds, and operational preferences</p>
                 </div>
@@ -141,7 +141,7 @@ export default function SettingsPage() {
                         </div>
                     </div>
                     {[
-                        { label: 'Platform Version', value: 'PrintSense AI v2.0.0' },
+                        { label: 'Platform Version', value: 'NeuroPress v2.0.0' },
                         { label: 'YOLO Model', value: 'YOLOv8-Industrial-FT' },
                         { label: 'LSTM Model', value: 'PrintPrice-LSTM-v3' },
                         { label: 'LangGraph', value: 'langgraph==0.1.x' },

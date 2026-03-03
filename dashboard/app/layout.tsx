@@ -3,7 +3,7 @@ import "./globals.css";
 import Sidebar from "./components/Sidebar";
 
 export const metadata: Metadata = {
-  title: "PrintSense AI | Industrial Command Center",
+  title: "NeuroPress | Industrial Command Center",
   description: "Advanced Printing & Packaging Production Intelligence Platform",
 };
 

@@ -93,7 +93,7 @@ export default function Sidebar() {
                     alignItems: 'center',
                     gap: '8px',
                 }}>
-                    <div className="pulse" style={{ flexShrink: 0 }} />
+                    <div className="logo-text">NeuroPress<span className="dot">.</span></div>
                     <div>
                         <div style={{ fontSize: '10px', fontWeight: 700, color: '#00f2fe', textTransform: 'uppercase', letterSpacing: '0.5px' }}>All Systems Online</div>
                         <div style={{ fontSize: '9px', color: '#3d4966', marginTop: '1px' }}>3 Agents Active</div>

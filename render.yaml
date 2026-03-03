@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: printsense-ai-dashboard
+    name: neuropress-ai-dashboard
     env: node
     region: oregon
     plan: free

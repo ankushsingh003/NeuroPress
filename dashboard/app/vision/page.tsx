@@ -127,7 +127,7 @@ export default function VisionPage() {
             {/* Header */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '32px' }}>
                 <div className="page-header" style={{ marginBottom: 0 }}>
-                    <div className="breadcrumb">PrintSense AI / Vision Intelligence</div>
+                    <div className="breadcrumb">NeuroPress / Neural Inspection</div>
                     <h1>Vision Intelligence <span className="badge badge-violet" style={{ verticalAlign: 'middle', marginLeft: '10px', fontSize: '10px' }}>4K AI Inspection</span></h1>
                     <p>Real-time multi-camera defect detection & quality control</p>
                 </div>

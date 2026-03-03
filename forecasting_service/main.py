@@ -5,7 +5,7 @@ import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
 from .model import PriceForecaster
 
-app = FastAPI(title="EcoStream Price Forecasting Service", version="1.0.0")
+app = FastAPI(title="NeuroPress Price Forecasting Service", version="1.0.0")
 
 # Enable CORS
 app.add_middleware(

@@ -17,7 +17,7 @@ def test_vqi_service():
     _, img_encoded = cv2.imencode('.jpg', img)
     files = {'file': ('test.jpg', img_encoded.tobytes(), 'image/jpeg')}
 
-    print("--- Sending Image to MarginGuard VQI Service ---")
+    print("--- Sending Image to NeuroPress VQI Service ---")
     try:
         response = requests.post(url, files=files)
         if response.status_code == 200:

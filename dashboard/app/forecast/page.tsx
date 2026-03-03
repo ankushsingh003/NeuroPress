@@ -132,7 +132,7 @@ export default function ForecastPage() {
       {/* Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '32px' }}>
         <div className="page-header" style={{ marginBottom: 0 }}>
-          <div className="breadcrumb">PrintSense AI / AI Forecast</div>
+          <div className="breadcrumb">NeuroPress / Market Intelligence</div>
           <h1>Market Intelligence <span className="badge badge-amber" style={{ verticalAlign: 'middle', marginLeft: '10px', fontSize: '10px' }}>Neural Hedge Engine</span></h1>
           <p>Predictive pricing & supply chain risk management for print materials</p>
         </div>

@@ -35,7 +35,7 @@ export default function OrchestrationPage() {
     <div className="animate-fade-up">
       <div style={{ marginBottom: '32px' }}>
         <div className="page-header" style={{ marginBottom: 0 }}>
-          <div className="breadcrumb">PrintSense AI / Orchestration</div>
+          <div className="breadcrumb">NeuroPress / Agent Orchestrator</div>
           <h1>LangGraph Orchestration <span className="badge badge-rose" style={{ verticalAlign: 'middle', marginLeft: '10px', fontSize: '10px' }}>Live Pipeline</span></h1>
           <p>Multi-agent graph execution trace & real-time decision flow</p>
         </div>

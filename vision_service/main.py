@@ -12,7 +12,7 @@ from .detector import DefectDetector
 # Register HEIF opener for iPhone support
 register_heif_opener()
 
-app = FastAPI(title="MarginGuard VQI Service", version="1.0.0")
+app = FastAPI(title="NeuroPress VQI Service", version="1.0.0")
 
 # Enable CORS for frontend integration
 app.add_middleware(
@@ -27,7 +27,7 @@ detector = DefectDetector()
 
 @app.get("/")
 async def root():
-    return {"message": "MarginGuard VQI Service is Online", "status": "healthy"}
+    return {"message": "NeuroPress VQI Service is Online", "status": "healthy"}
 
 @app.post("/detect")
 async def detect_defects(file: UploadFile = File(...)):
